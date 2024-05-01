@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'kumbh';
+    font-weight: 600;
+    src: url('./assets/fonts/kumbh-sans/static/KumbhSans-Regular.ttf') format('opentype');
+}
+
+@font-face {
+    font-family: 'noto';
+    src: url('./assets/fonts/noto-sans-jp/static/NotoSansJP-Regular.ttf') format('opentype');
+}
+
+@font-face {
+    font-family: 'poppins';
+    src: url('./assets/fonts/poppins/Poppins-Regular.ttf') format('opentype');
+}
+:root {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
