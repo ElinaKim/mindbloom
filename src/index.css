@@ -9,8 +9,13 @@
 }
 
 @font-face {
-    font-family: 'noto';
-    src: url('./assets/fonts/noto-sans-jp/static/NotoSansJP-Regular.ttf') format('opentype');
+    font-family: 'noto-semibold';
+    src: url('./assets/fonts/noto-sans-jp/static/NotoSansJP-SemiBold.ttf') format('opentype');
+}
+
+@font-face {
+    font-family: 'kumbh-bold';
+    src: url('./assets/fonts/kumbh-sans/static/KumbhSans-SemiBold.ttf') format('opentype');
 }
 
 @font-face {
