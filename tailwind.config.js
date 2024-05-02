@@ -6,8 +6,8 @@ export default {
   ],
   theme: {
     fontFamily: {
-      'noto': ['noto', 'sans-serif'],
       'sans': ['kumbh', 'sans-serif'],
+      'kumbh-bold': ['kumbh-bold', 'sans-serif'],
       'poppins': ['poppins', 'sans-serif'],
     },
     screens: {
@@ -22,6 +22,7 @@ export default {
       'purple': '#CE81FF',
       'yellow':  '#FFF68B',
       'grey': '#979797',
+      'light-grey': '#ECECEC',
     },
     extend: {
     },
