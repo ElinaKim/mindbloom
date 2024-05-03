@@ -15,16 +15,20 @@ export default {
       'lg': '1280px',
     },
     colors : {
+      'white': '#FFFFFF',
+      'black': '#000000',
       'green': '#CDFC93',
       'darker-green': '#9FDC63',
       'pink': '#FF7ECD',
+      'red': '#F51B00',
       'blue': ' #71D7FF',
       'purple': '#CE81FF',
       'yellow':  '#FFF68B',
       'grey': '#979797',
-      'light-grey': '#ECECEC',
+      'light-grey': '#D7D7D7',
     },
     extend: {
+      
     },
   },
   plugins: [],
