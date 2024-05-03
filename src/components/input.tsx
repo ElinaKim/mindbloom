@@ -2,6 +2,7 @@ import {
     InputHTMLAttributes,
     forwardRef
 } from 'react'
+import Error from '../assets/icons/error.svg'
 
 export interface CustomInputProps extends InputHTMLAttributes<HTMLInputElement> {
     labelText?: string
@@ -16,8 +17,7 @@ export const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
                 <label 
                     htmlFor={inputProps.id}
                     className='
-                        text-base text-navy-700 dark:text-white
-                        font-bold'
+                        font-kumbh-bold font-bold text-black'
                 >
                     {labelText}
                 </label>
@@ -26,12 +26,22 @@ export const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
                     ref={ref}
                     {...inputProps}
                     className='mt-2 flex h-12 
-                        w-full items-center justify-center rounded-xl border 
-                        bg-white/0 p-3 text-sm outline-none border-gray-200'
+                        w-full items-center justify-center rounded border
+                        bg-white/0 p-3 text-base outline-none border-grey focus:border-black focus:border-2'
                     aria-describedby={errorMessage ? `${inputProps.id}-error` : undefined}
                 />
                 {errorMessage && (
-                    <small id={`${inputProps.id}-error`} className='mt-2 text-sm text-red'>
+                    <small
+                    id={`${inputProps.id}-error`}
+                    className='text-sm text-red pl-6'
+                    style={{
+                        backgroundImage: `url(${Error})`,
+                        backgroundSize: 'contain',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundAttachment: 'scroll',
+                        backgroundPosition: 'left',
+                      }}
+                    >
                         {errorMessage}
                     </small>
                 )}
