@@ -1,12 +1,12 @@
 
 export function TaskCheckbox({ }) {
-    return(
+  return (
     <>
-        <input 
+      <input
         type="checkbox"
         onClick={onClick}
         defaultChecked={defaultChecked}
-        />
+      />
     </>
-    )
+  )
 }
