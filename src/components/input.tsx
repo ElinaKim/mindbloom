@@ -27,7 +27,7 @@ export const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
                     {...inputProps}
                     className='mt-2 flex h-12 
                         w-full items-center justify-center rounded border
-                        bg-white/0 p-3 text-base outline-none border-grey focus:border-black focus:border-2'
+                        bg-white p-3 text-base outline-none border-grey focus:border-black focus:border-2'
                     aria-describedby={errorMessage ? `${inputProps.id}-error` : undefined}
                 />
                 {errorMessage && (

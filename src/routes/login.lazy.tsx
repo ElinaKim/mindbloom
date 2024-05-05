@@ -26,18 +26,18 @@ function Login() {
     <div className={`relative flex flex-col items-center justify-items-center h-screen`}>
       <div 
       style={{
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      backgroundImage: `url(${Petals})`,
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-      backgroundAttachment: 'scroll',
-      backgroundPosition: 'left',
-      opacity: '0.5',
-    }} 
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        backgroundImage: `url(${Petals})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'scroll',
+        backgroundPosition: 'left',
+        opacity: '0.5',
+      }} 
     />
     <div
       className='flex flex-col items-center mt-8 w-[90%]'
@@ -66,7 +66,7 @@ function Login() {
           placeholder='Enter your password'
           type='password'
           id='password'
-          errorMessage={errors.password ? 'Password must be exactly 8 characters long' : undefined}
+          errorMessage={errors.password ? 'Password must be at least 8 characters' : undefined}
           aria-invalid={errors.password ? 'true' : 'false'}
           {...register('password', { required: true, minLength: 8})}
         />
