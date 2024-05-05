@@ -1,0 +1,22 @@
+{
+  "name": "mindbloom-server",
+  "version": "1.0.0",
+  "description": "mindbloom server-side app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElinaKim/mindbloom.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElinaKim/mindbloom/issues"
+  },
+  "homepage": "https://github.com/ElinaKim/mindbloom#readme"
+}
