@@ -2,8 +2,8 @@ import express from 'express'
 import cors from 'cors'
 import http from 'http'
 import dotenv from 'dotenv'
-// import userRoutes from './routes/user-routes';
-import taskRoutes from './routes/task-routes';
+import userRoutes from './routes/user-routes'
+import taskRoutes from './routes/task-routes'
 
 
 dotenv.config()
@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/tasks', taskRoutes)
+app.use('/users', userRoutes)
 
 server.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`)
