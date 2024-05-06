@@ -4,7 +4,8 @@
   "description": "mindbloom server-side app",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx --watch ./src/index.ts"
+    "dev": "tsx --watch ./src/index.ts",
+    "migration:create": "npx knex migrate:make migration_name -x ts"
   },
   "repository": {
     "type": "git",
@@ -20,18 +21,23 @@
   },
   "homepage": "https://github.com/ElinaKim/mindbloom#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-router": "^0.0.1",
+    "jsonwebtoken": "^9.0.2",
     "knex": "^3.1.0",
     "mysql2": "^3.9.7"
   },
   "devDependencies": {
     "@tsconfig/node21": "^21.0.3",
+    "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
-    "@types/node": "^20.12.8",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^20.12.10",
+    "ts-node": "^10.9.2",
     "tsx": "^4.9.1",
     "typescript": "^5.4.5"
   }

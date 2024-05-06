@@ -1,6 +1,9 @@
-require("dotenv").config();
+import type { Knex } from 'knex'
+import dotnev from 'dotenv'
 
-module.exports = {
+dotnev.config()
+
+const config: Knex.Config = {
   client: "mysql2",
   connection: {
     host: process.env.DB_HOST,
@@ -10,3 +13,5 @@ module.exports = {
     charset: "utf8",
   },
 };
+
+module.exports = config;
