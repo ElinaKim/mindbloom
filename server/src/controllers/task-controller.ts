@@ -1,20 +1,15 @@
 import { Request, Response } from "express";
+import { db } from '../db'
 
-const knex = require('knex')(require('../../knexfile'));
-
-//get today's tasks
+//date object
 const date = new Date()
 date.setDate(date.getDate() - 1)
 const today = date.toISOString().split('T')[0];
 
-const getTodayTasks = async (req: Request, res: Response) => {
+//get today's tasks
+const getTodayTasks = async (_req: Request, res: Response) => {
     try {
-        const tasks = await knex('task').where({ 'due_date': today })
-        if (tasks.length === 0) {
-            return res.status(404).json({
-                message: `Today's tasks were not found.`
-            })
-        }
+        const tasks = await db('task').where({ 'due_date': today })
         res.status(200).json(tasks);
     } catch (error) {
         res.status(500).json({
@@ -24,14 +19,9 @@ const getTodayTasks = async (req: Request, res: Response) => {
 }
 
 //get upcoming tasks
-const getUpcomingTasks = async (req: Request, res: Response) => {
+const getUpcomingTasks = async (_req: Request, res: Response) => {
     try {
-        const tasks = await knex('task').where('due_date', '<', today)
-        if (tasks.length === 0) {
-            return res.status(404).json({
-                message: `Upcoming tasks were not found.`
-            })
-        }
+        const tasks = await db('task').where('due_date', '>', today)
         res.status(200).json(tasks);
     } catch (error) {
         res.status(500).json({
@@ -40,14 +30,26 @@ const getUpcomingTasks = async (req: Request, res: Response) => {
     }
 }
 
+//get task by id
+const getTaskById = async (req: Request, res: Response) => {
+    const { task_id } = req.params
+    try {
+        const task = await db('task').where({ id: task_id })
+        res.status(200).json(task)
+    } catch (error) {
+        res.status(500).json({
+            message: `Unable to retrieve the task with id: ${task_id}`
+        })
+    }
+}
 
 //post task
 const postTask = async (req: Request, res: Response) => {
     const postData = req.body
     try {
-        const data = await knex('task').insert(postData)
+        const data = await db('task').insert(postData)
         const newTask = data[0]
-        const createdTask = await knex('task').where({ id: newTask }).first()
+        const createdTask = await db('task').where({ id: newTask }).first()
         res.status(201).json({ createdTask })
     } catch (error) {
         res.status(500).json({ message: `Error creating new task` });
@@ -59,7 +61,7 @@ const updateTask = async (req: Request, res: Response) => {
     const { task_id } = req.params
     const putData = req.body
     try {
-        const updatedData = await knex('task').where({ id: task_id }).update(putData)
+        const updatedData = await db('task').where({ id: task_id }).update(putData)
         res.status(200).json({ updatedData })
     } catch (error) {
         res.status(500).json({ message: `Error updating task item` })
@@ -70,11 +72,11 @@ const updateTask = async (req: Request, res: Response) => {
 const deleteTask = async (req: Request, res: Response) => {
     const { task_id } = req.params
     try {
-        const deletedTask = await knex('task').where({ id: task_id }).delete()
+        const deletedTask = await db('task').where({ id: task_id }).delete()
         if (deletedTask === 0) {
             return res
                 .status(404)
-                .json({ message: `Warehouse with ID ${req.params.warehouse_id} not found` });
+                .json({ message: `Task not found` });
         }
         res.status(204).json({ message: `Task deleted successfully.` })
     } catch (error) {
@@ -87,6 +89,7 @@ const deleteTask = async (req: Request, res: Response) => {
 export {
     getTodayTasks,
     getUpcomingTasks,
+    getTaskById,
     updateTask,
     postTask,
     deleteTask,

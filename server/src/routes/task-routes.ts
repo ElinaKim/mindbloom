@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getTodayTasks, getUpcomingTasks, updateTask, postTask, deleteTask } from '../controllers/task-controller'
+import { getTodayTasks, getUpcomingTasks, getTaskById, updateTask, postTask, deleteTask } from '../controllers/task-controller'
 
 const router = Router()
 
@@ -10,6 +10,10 @@ router
 router
     .route('/upcoming')
     .get(getUpcomingTasks)
+
+router
+    .route('/:task_id')
+    .get(getTaskById)
 
 router
     .route('/update-task/:task_id')
