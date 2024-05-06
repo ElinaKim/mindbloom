@@ -5,7 +5,7 @@
     },
     "include": [
         "src/**/*"
-    ],
+, "src/controllers"    ],
     "exclude": [
         "node_modules"
     ]
