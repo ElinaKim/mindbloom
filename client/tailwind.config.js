@@ -28,7 +28,9 @@ export default {
       'light-grey': '#D7D7D7',
     },
     extend: {
-      
+      backgroundImage: {
+        'taskBackground': "url('../src/assets/images/wallBackground.jpeg')"
+      }
     },
   },
   plugins: [],
