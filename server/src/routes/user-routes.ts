@@ -20,6 +20,7 @@ router.post('/register', async (req, res) => {
         }, ['id'])
         res.status(201).send({ userId })
     } catch (error) {
+        console.error(error)
         res.status(500).json({ error: 'Error creating user' })
     }
 })
@@ -31,7 +32,7 @@ router.post('/login', async (req, res) => {
         .first();
 
     if (user && await bcrypt.compare(password, user.password)) {
-        const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, { expiresIn: '1h' })
+        const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, { expiresIn: '24h' })
         res.json({ token })
     } else {
         res.status(401)
@@ -39,7 +40,6 @@ router.post('/login', async (req, res) => {
 })
 
 router.get('/profile', authenticateToken, async (req: AuthenticatedRequest, res) => {
-    console.log(req.user.userId)
     const user = await db<User>('user')
         .where({ id: req.user.userId })
         .first()
