@@ -3,7 +3,7 @@ import type { Task } from '../types/task'
 import { getLocalStorageToken } from '../utils/tokenStorage'
 
 interface TaskPayload {
-  task_id: number,
+  task_id?: number,
   task_name: string,
   description: string,
   due_date: number
