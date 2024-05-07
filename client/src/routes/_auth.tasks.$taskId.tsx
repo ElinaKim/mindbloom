@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-export const Route = createFileRoute('/tasks/$taskId')({
+export const Route = createFileRoute('/_auth/tasks/$taskId')({
   component: TaskComponent,
 })
 
