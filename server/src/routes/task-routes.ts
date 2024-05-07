@@ -92,7 +92,7 @@ router.put('/update-task/:task_id', authenticateToken, async (req: Authenticated
 )
 
 //delete task by id
-router.delete('/delete-task/tasl_id', authenticateToken, async (req: AuthenticatedRequest, res: Response) => {
+router.delete('/delete-task/:task_id', authenticateToken, async (req: AuthenticatedRequest, res: Response) => {
   const { task_id } = req.params
   try {
     const deletedTask = await db('task').where({ id: task_id }).delete()
