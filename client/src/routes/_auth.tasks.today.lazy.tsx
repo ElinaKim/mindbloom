@@ -64,11 +64,11 @@ function Today() {
         <div className='flex-shrink-0'>
           <TaskMenu />
         </div>
-        <div className='w-[80vw] flex flex-col justify-between m-auto mt-4 md:mt-8 p-4 shadow'>
+        <div className='w-[80vw] flex flex-col justify-between m-auto mt-2 md:mt-4 p-4'>
           <h1 className='text-xl md:text-4xl'>Hello, {user.user_name}</h1>
           <h2 className='text-xl mt-2 pb-2 md:text-2xl md:mt-4 font-kumbh-bold'>Tasks</h2>
-          <h2 className='text-base mt-2 pb-2 md:text-xl md:mt-4 font-kumbh-bold'>Today <span className='bg-light-grey p-1 rounded'>{currentDate}</span></h2>
-          <button className='self-start my-4 py-2 w-[25%] rounded-md text-white bg-black' onClick={openModal}>
+          <h2 className='text-base mt-2 pb-2 md:text-xl md:mt-4 font-kumbh-bold'>Today: <span className='bg-green px-2 rounded shadow'>{currentDate}</span></h2>
+          <button className='self-start my-4 py-2 w-full md:w-[25%] rounded-md text-white bg-black' onClick={openModal}>
             Add New Task
           </button>
           <div className=''>

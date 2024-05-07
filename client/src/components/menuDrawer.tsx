@@ -16,21 +16,16 @@ export function MenuDrawer({ isOpen, closeDrawer }: DrawerProps) {
         <h1 className='font-kumbh-bold text-2xl'>Menu</h1>
         <button onClick={closeDrawer} className="text-grey focus:outline-none">&#10005;</button>
       </div>
-      <div className='m-4 flex flex-col h-[100%]'>
+      <div className='m-4 flex flex-col h-[100%] gap-8'>
         <h2 className='mt-8 text-xl'>Tasks</h2>
-        <Link to='/tasks/upcoming'><div className='flex align-center gap-2'>
+        <Link to='/tasks/upcoming'><div className='flex align-center gap-2 p-2 rounded hover:bg-green'>
           <img className='w-6' src={UpcomingIcon} alt='upcoming tasks icon'></img>
           <h3 className='text-lg'>Upcoming</h3>
         </div>
         </Link>
-        <div className='flex align-center gap-2'>
+        <div className='flex align-center gap-2 p-2 rounded hover:bg-green'>
           <img className='w-6' src={TodayIcon} alt='upcoming tasks icon'></img>
           <Link to='/tasks/today'><h3 className='text-lg'>Today</h3></Link>
-        </div>
-        <div>
-          <div>
-            <h2 className='mt-12 text-xl'>Tags</h2>
-          </div>
         </div>
       </div>
       <div className='m-4 self-end flex align-center gap-2'>

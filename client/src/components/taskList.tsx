@@ -27,9 +27,9 @@ export function TaskList({ tasks: initialTasks }: TaskListProps) {
       {
         tasks.map(task => {
           return (
-            <div key={task.id} className='flex items-center bg-white border-light-grey border-2 pt-4 p-2 rounded hover:border-blue hover:border-2 shadow'>
+            <div key={task.id} className='flex items-center bg-white border-2 pt-4 p-2 rounded hover:border-purple hover:border-2 shadow'>
               <TaskCheckbox />
-              <p className='place-self-center p-4 w-[100%]'>{task.task_name}</p>
+              <p className='place-self-center pl-4 w-[100%] text-base md:text-xl'>{task.task_name}</p>
               <button
                 onClick={() => handleClick(task.id)}
                 className='self-end'

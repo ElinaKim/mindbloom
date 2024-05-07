@@ -1,4 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form";
+import { Link } from "@tanstack/react-router";
 
 import {
   createFileRoute,
@@ -117,6 +118,14 @@ function Login() {
             >
               Login
             </button>
+            <p className="self-center">
+              <span className="text-grey py-0.5 px-1">
+                Don't have an account yet?
+              </span>
+              <Link className="mx-2" to="/register">
+                <span className="hover:underline">Register</span>
+              </Link>
+            </p>
           </form>
         </div>
       </div>
