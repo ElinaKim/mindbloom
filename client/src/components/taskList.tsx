@@ -1,36 +1,30 @@
 import { TaskCheckbox } from "./taskCheckbox"
 import DeleteIcon from '../assets/icons/delete.svg'
 
-interface Todo {
-    id: number 
-    name: string
-    description: string
-    date: string
-    done: boolean
 
-}
+const handleDelete = () => { console.log('delete') }
 
-interface AppState {
-    todos: Todo[];
-    todoText: string;
-}
-
-const handleDelete  = () => { console.log('delete') }
 
 export function TaskList() {
+    const handleClick = () => {
+        handleDelete();
+    }
     return (
-    <>
-        <TaskCheckbox />
-        <button 
-            onClick={handleDelete} 
-            className=''
-        >
-            <img 
-                className='m-4 w-[25px]'
-                src={DeleteIcon}
-                alt='delete icon'
-            />
-        </button>
-    </>
+        <>
+            <div className='flex items-center bg-white pt-4 border-light-grey border-b-2'>
+                <TaskCheckbox />
+                <p className='place-self-center p-4 w-[100%]'>Do something</p>
+                <button
+                    onClick={handleClick}
+                    className='self-end'
+                >
+                    <img
+                        className='my-4 w-[25px]'
+                        src={DeleteIcon}
+                        alt='delete icon'
+                    />
+                </button>
+            </div>
+        </>
     )
 }
