@@ -54,6 +54,10 @@ function Today() {
     setShowModal(false);
   };
 
+  const handleFormSubmit = () => {
+    preload(); // Trigger re-render by fetching updated tasks
+  };
+
   return (
     <>
       <div className='flex content-center h-screen bg-taskBackground bg-no-repeat bg-cover'>
@@ -77,7 +81,7 @@ function Today() {
       {showModal && (
         <div className="fixed justify-center items-center top-0 left-0 w-[100%] h-full bg-black bg-opacity-60">
           <div className="">
-            <TaskForm closeModal={closeModal} />
+            <TaskForm closeModal={() => setShowModal(false)} onFormSubmit={handleFormSubmit} />
           </div>
         </div>
       )}
