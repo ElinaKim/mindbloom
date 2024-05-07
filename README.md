@@ -4,7 +4,7 @@
 
 ## Overview
 
-mindbloom is a user friendly To-Do web app that helps people organize their daily life with ease.
+mindbloom is a user-friendly To-Do web app that helps people organize their daily life with ease.
 
 ## Problem
 
@@ -29,7 +29,7 @@ This app provides a simple and elegant interface, it empowers its users to organ
 
 - /tasks/create-task
 
-- /tasks/update-task/task_id
+- /tasks/update-task/:task_id
 
 - /tasks/delete-task/:task_id
 
@@ -50,7 +50,7 @@ This app provides a simple and elegant interface, it empowers its users to organ
 
 #### Menu Window:
 
-- Click on Upcoming tasks to reveal the rest of tasks
+- Click on Upcoming tasks to reveal the rest of the tasks
 - Click on Today to only display Today's tasks
 - Sign out
 
@@ -66,7 +66,7 @@ cd server/
 npm i
 ```
 
-The app uses knex to run queries and manage db migrations
+The app uses Knex to run queries and manage db migrations
 
 #### Database
 
@@ -113,7 +113,7 @@ npm i
 ```
 
 ```
-Configure connection details with URL as described in .env.sample in your .env
+Configure connection details with URL as described in the .env.sample in your .env
 ```
 
 The app uses Vite as a build tool and development server.
