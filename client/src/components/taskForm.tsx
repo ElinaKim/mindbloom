@@ -3,9 +3,10 @@ import * as tasksApi from '../api/taskApi'
 
 export interface TaskFormProps {
   closeModal: () => void
+  onFormSubmit: () => void
 }
 
-export function TaskForm({ closeModal }: TaskFormProps) {
+export function TaskForm({ closeModal, onFormSubmit }: TaskFormProps) {
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -19,7 +20,9 @@ export function TaskForm({ closeModal }: TaskFormProps) {
     try {
       const newTask = await tasksApi.createTask({ task_name, description, due_date })
       console.log(newTask)
-      form.reset();
+      form.reset()
+      closeModal()
+      onFormSubmit()
     } finally {
       setLoading(false)
     }
