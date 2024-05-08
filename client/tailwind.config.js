@@ -19,7 +19,7 @@ export default {
       'black': '#000000',
       'green': '#C4D3D4',
       'darker-green': '#9FDC63',
-      'pink': '#FF7ECD',
+      'pink': '#F4C8D8',
       'red': '#F51B00',
       'blue': ' #71D7FF',
       'purple': '#AE7AB9',
@@ -29,7 +29,7 @@ export default {
     },
     extend: {
       backgroundImage: {
-        'taskBackground': "url('../src/assets/images/wallBackground.jpeg')"
+        'taskBackground': "url('../src/assets/images/petals.webp')"
       }
     },
   },
