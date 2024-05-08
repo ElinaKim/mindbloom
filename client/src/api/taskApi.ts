@@ -75,7 +75,7 @@ export const updateTask = async ({ task_id, task_name, description, due_date }: 
   }
 }
 
-export const createTask = async ({ task_name, description, due_date }: TaskPayload) => {
+export const createTask = async (task_name: string, description: string, due_date: string) => {
   try {
     const authToken = getLocalStorageToken()
     const response = await ApiClient.post(`/tasks/create-task`,
