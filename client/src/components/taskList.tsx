@@ -11,6 +11,16 @@ export interface TaskListProps {
 export function TaskList({ tasks: initialTasks }: TaskListProps) {
   const [tasks, setTasks] = useState<Task[]>(initialTasks)
 
+  const handleCheckboxChange = (taskId: number) => {
+    const updatedTasks = tasks.map(task => {
+      if (task.id === taskId) {
+        return { ...task, isChecked: !task.isChecked };
+      }
+      return task;
+    });
+    setTasks(updatedTasks);
+  };
+
   const handleClick = async (task_id: number) => {
     try {
       await tasksApi.deleteTask({ task_id });
@@ -27,9 +37,16 @@ export function TaskList({ tasks: initialTasks }: TaskListProps) {
       {
         tasks.map(task => {
           return (
-            <div key={task.id} className='flex items-center bg-white border-2 pt-4 p-2 rounded hover:border-purple hover:border-2 shadow'>
-              <TaskCheckbox />
-              <p className='place-self-center pl-4 w-[100%] text-base md:text-xl'>{task.task_name}</p>
+            <div
+              key={task.id}
+              className='flex items-center bg-white border-2 pt-4 p-2 rounded hover:border-pink hover:border-2 shadow'>
+              <TaskCheckbox
+                isChecked={task.isChecked || false}
+                onCheckboxChange={() => handleCheckboxChange(task.id)} />
+              <p
+                className={`place-self-center pl-4 w-[100%] text-base md:text-xl ${task.isChecked ? 'line-through text-grey' : ''}`}>
+                {task.task_name}
+              </p>
               <button
                 onClick={() => handleClick(task.id)}
                 className='self-end'

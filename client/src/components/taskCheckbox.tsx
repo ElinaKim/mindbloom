@@ -1,13 +1,15 @@
-const onClick = () => {
-  console.log('Click checkbox')
+interface TaskCheckboxProps {
+  isChecked: boolean;
+  onCheckboxChange: () => void;
 }
 
-export function TaskCheckbox({ }) {
+export function TaskCheckbox({ isChecked, onCheckboxChange }: TaskCheckboxProps) {
   return (
     <>
       <input
         type="checkbox"
-        onClick={onClick}
+        checked={isChecked}
+        onChange={onCheckboxChange}
       />
     </>
   )
