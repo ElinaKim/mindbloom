@@ -1,7 +1,7 @@
-import { TaskCheckbox } from "./taskCheckbox"
-import DeleteIcon from '../assets/icons/delete.svg'
-import type { Task } from '../types/task'
-import * as tasksApi from '../api/taskApi'
+import { TaskCheckbox } from './taskCheckbox';
+import DeleteIcon from '../assets/icons/delete.svg';
+import type { Task } from '../types/task';
+import * as tasksApi from '../api/taskApi';
 import { useState } from 'react';
 
 export interface TaskListProps {

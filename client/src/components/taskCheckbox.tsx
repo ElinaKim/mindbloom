@@ -1,15 +1,14 @@
 const onClick = () => {
-    console.log('Click checkbox')
+  console.log('Click checkbox')
 }
 
 export function TaskCheckbox({ }) {
-    return (
-        <>
-            <input
-                type="checkbox"
-                onClick={onClick}
-            // defaultChecked={defaultChecked}
-            />
-        </>
-    )
+  return (
+    <>
+      <input
+        type="checkbox"
+        onClick={onClick}
+      />
+    </>
+  )
 }

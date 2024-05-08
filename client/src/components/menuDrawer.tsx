@@ -1,7 +1,7 @@
-import UpcomingIcon from '../assets/icons/upcoming.svg'
-import TodayIcon from '../assets/icons/today.svg'
-import SignOutIcon from '../assets/icons/signout.svg'
-import { Link } from '@tanstack/react-router'
+import UpcomingIcon from '../assets/icons/upcoming.svg';
+import TodayIcon from '../assets/icons/today.svg';
+import SignOutIcon from '../assets/icons/signout.svg';
+import { Link } from '@tanstack/react-router';
 
 
 interface DrawerProps {
@@ -12,7 +12,7 @@ interface DrawerProps {
 export function MenuDrawer({ isOpen, closeDrawer }: DrawerProps) {
   return (
     <div className={`${isOpen ? 'w-72 backdrop-blur-sm' : 'w-0'} h-[90vh] bg-white shadow-md shadow-grey transition-all duration-500 flex flex-col`}>
-      <div className="flex justify-between p-4">
+      <div className='flex justify-between p-4'>
         <h1 className='font-kumbh-bold text-2xl'>Menu</h1>
         <button onClick={closeDrawer} className="text-grey focus:outline-none">&#10005;</button>
       </div>

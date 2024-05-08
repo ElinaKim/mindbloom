@@ -6,7 +6,7 @@ import React, {
   type ReactNode
 } from 'react'
 
-import { getLocalStorageToken, setLocalStorageToken } from './utils/tokenStorage'
+import { getLocalStorageToken, setLocalStorageToken } from './utils/tokenStorage';
 
 const AuthContext = React.createContext<AuthContext | null>(null)
 

@@ -1,5 +1,5 @@
-import { useForm, SubmitHandler } from "react-hook-form";
-import { Link } from "@tanstack/react-router";
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { Link } from '@tanstack/react-router';
 
 import {
   createFileRoute,

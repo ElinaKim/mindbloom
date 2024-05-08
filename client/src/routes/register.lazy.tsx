@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { CustomInput } from "../components/input";
-import { createLazyFileRoute, Link, useRouter } from "@tanstack/react-router";
-import Petals from "../assets/images/petals.webp";
-import * as usersApi from "../api/userApi";
+import { useState } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { CustomInput } from '../components/input';
+import { createLazyFileRoute, Link, useRouter } from '@tanstack/react-router';
+import Petals from '../assets/images/petals.webp';
+import * as usersApi from '../api/userApi';
 
 export const Route = createLazyFileRoute("/register")({
   component: Register,
@@ -13,7 +13,7 @@ type RegisterInputs = {
   userName: string;
   email: string;
   password: string;
-};
+}
 
 function Register() {
   const [loading, setLoading] = useState(false);
@@ -28,7 +28,7 @@ function Register() {
 
   const onSubmit: SubmitHandler<RegisterInputs> = async (data) => {
     try {
-      setLoading(true);
+      setLoading(true)
       await usersApi.register(data.userName, data.email, data.password)
       router.invalidate().finally(() => {
         navigate({ to: '/login' })

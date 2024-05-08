@@ -3,9 +3,9 @@ import { createLazyFileRoute } from '@tanstack/react-router';
 import { TaskMenu } from '../components/taskMenu';
 import { TaskList } from '../components/taskList';
 import { TaskForm } from '../components/taskForm';
-import * as tasksApi from '../api/taskApi'
-import * as userApi from '../api/userApi'
-import type { Task } from '../types/task'
+import * as tasksApi from '../api/taskApi';
+import * as userApi from '../api/userApi';
+import type { Task } from '../types/task';
 
 export const Route = createLazyFileRoute('/_auth/tasks/today')({
   component: Today,

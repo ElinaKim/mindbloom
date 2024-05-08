@@ -1,13 +1,13 @@
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 import {
   createFileRoute,
   Link,
   Outlet,
   redirect,
   useRouter,
-} from '@tanstack/react-router'
-import Logo from '../assets/logo.svg'
-import { useAuth } from '../auth'
+} from '@tanstack/react-router';
+import Logo from '../assets/logo.svg';
+import { useAuth } from '../auth';
 
 export const Route = createFileRoute('/_auth')({
   beforeLoad: async ({ context }) => {
@@ -25,7 +25,6 @@ function AuthLayout() {
   const navigate = Route.useNavigate()
   const auth = useAuth()
 
-  // remove this useEffect once https://github.com/TanStack/router/issues/1534#issuecomment-2084873898 is resolved
   useEffect(() => {
     if (!auth.isAuthenticated) {
       router.invalidate().finally(() => {

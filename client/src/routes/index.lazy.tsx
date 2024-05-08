@@ -1,6 +1,6 @@
-import { createLazyFileRoute, Link } from '@tanstack/react-router'
-import CherryBlossom from '../assets/images/cherry-blossom.png'
-import Arrow from '../assets/icons/arrow.svg'
+import { createLazyFileRoute, Link } from '@tanstack/react-router';
+import CherryBlossom from '../assets/images/cherry-blossom.png';
+import Arrow from '../assets/icons/arrow.svg';
 
 export const Route = createLazyFileRoute('/')({
   component: Index,

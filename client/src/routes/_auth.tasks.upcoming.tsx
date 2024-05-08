@@ -1,17 +1,15 @@
-import { useEffect, useState } from 'react'
-import { createFileRoute } from '@tanstack/react-router'
-import * as tasksApi from '../api/taskApi'
-import * as userApi from '../api/userApi'
+import { useEffect, useState } from 'react';
+import { createFileRoute } from '@tanstack/react-router';
+import * as tasksApi from '../api/taskApi';
+import * as userApi from '../api/userApi';
 import { TaskMenu } from '../components/taskMenu';
-import { TaskList } from '../components/taskList'
+import { TaskList } from '../components/taskList';
 import { TaskForm } from '../components/taskForm';
-import type { Task } from '../types/task'
+import type { Task } from '../types/task';
 
 export const Route = createFileRoute('/_auth/tasks/upcoming')({
   component: UpcomingTasksComponent,
 })
-
-const currentDate = new Date().toDateString();
 
 function UpcomingTasksComponent() {
   const [user, setUser] = useState<any>(null)
@@ -47,16 +45,12 @@ function UpcomingTasksComponent() {
   }
 
   const openModal = () => {
-    setShowModal(true);
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-  };
+    setShowModal(true)
+  }
 
   const handleFormSubmit = () => {
-    preload(); // Trigger re-render by fetching updated tasks
-  };
+    preload() // trigger re-render by fetching updated tasks
+  }
 
   return (
     <>
