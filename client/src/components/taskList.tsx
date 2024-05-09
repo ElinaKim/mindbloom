@@ -36,17 +36,23 @@ export function TaskList({ tasks: initialTasks }: TaskListProps) {
     <>
       {
         tasks.map(task => {
+          const taskDueDate = new Date(task.due_date)
           return (
             <div
               key={task.id}
-              className='flex items-center bg-white border-2 pt-4 p-2 rounded hover:border-pink hover:border-2 shadow'>
-              <TaskCheckbox
-                isChecked={task.isChecked || false}
-                onCheckboxChange={() => handleCheckboxChange(task.id)} />
-              <p
-                className={`place-self-center pl-4 w-[100%] text-base md:text-xl ${task.isChecked ? 'line-through text-grey' : ''}`}>
-                {task.task_name}
-              </p>
+              className='flex justify-between items-center bg-white border-2 pt-4 p-2 mt-2 rounded hover:border-pink hover:border-2 shadow'>
+              <div className='flex'>
+                <TaskCheckbox
+                  isChecked={task.isChecked || false}
+                  onCheckboxChange={() => handleCheckboxChange(task.id)} />
+                <div className='flex flex-col'>
+                  <p
+                    className={`place-self-center pl-4 w-[100%] text-base md:text-xl ${task.isChecked ? 'line-through text-grey' : ''}`}>
+                    {task.task_name}
+                  </p>
+                  <p className='pl-4 text-grey'>Due: {taskDueDate.toLocaleString()}</p>
+                </div>
+              </div>
               <button
                 onClick={() => handleClick(task.id)}
                 className='self-end'
