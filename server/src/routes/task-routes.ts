@@ -1,4 +1,5 @@
-import type { Response } from "express";
+import type { Response } from "express"
+import dayjs from "dayjs"
 import { db } from '../db'
 import { Router } from "express"
 import { authenticateToken } from '../middlewares/auth'
@@ -10,8 +11,7 @@ const router = Router()
 //get today's tasks
 router.get('/today', authenticateToken, async (req: AuthenticatedRequest, res: Response) => {
   try {
-    const today = new Date().toISOString().substring(0, 10)
-    console.log('today', today)
+    const today = dayjs().format('YYYY-MM-DD')
     const tasks = await db('task')
       .where('due_date', '=', today)
       .andWhere({ 'user_id': req.user.userId })
@@ -28,8 +28,7 @@ router.get('/today', authenticateToken, async (req: AuthenticatedRequest, res: R
 //get upcoming tasks
 router.get('/upcoming', authenticateToken, async (req: AuthenticatedRequest, res: Response) => {
   try {
-    const today = new Date().toISOString().slice(0, 10)
-
+    const today = dayjs().format('YYYY-MM-DD')
     const tasks = await db('task')
       .where('due_date', '>', today)
       .andWhere({ 'user_id': req.user.userId })
@@ -47,11 +46,8 @@ router.get('/upcoming', authenticateToken, async (req: AuthenticatedRequest, res
 router.get('/:task_id', authenticateToken, async (req: AuthenticatedRequest, res: Response) => {
   const { task_id } = req.params
   try {
-    const today = new Date().toISOString().slice(0, 10)
-
     const task = await db('task')
-      .where({ id: task_id })
-      .where('due_date', '=', today)
+      .where({ id: task_id }).first()
     res.status(200).json(task)
   } catch (error) {
     res.status(500).json({
