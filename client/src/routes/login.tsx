@@ -14,8 +14,7 @@ import { CustomInput } from "../components/input"
 import * as userApi from '../api/userApi'
 
 export const Route = createFileRoute("/login")({
-  beforeLoad: async ({ context }) => {
-    console.log('context.auth.isAuthenticated', context.auth.isAuthenticated)
+  beforeLoad: ({ context }) => {
     if (context.auth.isAuthenticated) {
       throw redirect({ to: '/tasks/upcoming' })
     }
@@ -31,9 +30,7 @@ type LoginInputs = {
 function Login() {
   const auth = useAuth()
   const router = useRouter()
-  const isLoading = useRouterState({ select: (s) => s.isLoading })
   const navigate = Route.useNavigate()
-  const search = Route.useSearch()
 
   const {
     register,

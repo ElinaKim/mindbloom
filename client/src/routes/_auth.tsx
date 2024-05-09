@@ -9,8 +9,9 @@ import {
 import Logo from '../assets/logo.svg';
 import { useAuth } from '../auth';
 
+
 export const Route = createFileRoute('/_auth')({
-  beforeLoad: async ({ context }) => {
+  beforeLoad: ({ context }) => {
     if (!context.auth.isAuthenticated) {
       throw redirect({
         to: '/login'
@@ -24,14 +25,6 @@ function AuthLayout() {
   const router = useRouter()
   const navigate = Route.useNavigate()
   const auth = useAuth()
-
-  useEffect(() => {
-    if (!auth.isAuthenticated) {
-      router.invalidate().finally(() => {
-        navigate({ to: '/login' })
-      })
-    }
-  }, [])
 
   const handleLogout = () => {
     if (window.confirm('Are you sure you want to logout?')) {

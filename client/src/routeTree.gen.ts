@@ -16,6 +16,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as LoginImport } from './routes/login'
 import { Route as AuthImport } from './routes/_auth'
 import { Route as AuthTasksUpcomingImport } from './routes/_auth.tasks.upcoming'
+import { Route as AuthTasksTodayImport } from './routes/_auth.tasks.today'
 import { Route as AuthTasksTaskIdImport } from './routes/_auth.tasks.$taskId'
 
 // Create Virtual Routes
@@ -23,7 +24,6 @@ import { Route as AuthTasksTaskIdImport } from './routes/_auth.tasks.$taskId'
 const RegisterLazyImport = createFileRoute('/register')()
 const AboutLazyImport = createFileRoute('/about')()
 const IndexLazyImport = createFileRoute('/')()
-const AuthTasksTodayLazyImport = createFileRoute('/_auth/tasks/today')()
 
 // Create/Update Routes
 
@@ -52,15 +52,13 @@ const IndexLazyRoute = IndexLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 
-const AuthTasksTodayLazyRoute = AuthTasksTodayLazyImport.update({
-  path: '/tasks/today',
-  getParentRoute: () => AuthRoute,
-} as any).lazy(() =>
-  import('./routes/_auth.tasks.today.lazy').then((d) => d.Route),
-)
-
 const AuthTasksUpcomingRoute = AuthTasksUpcomingImport.update({
   path: '/tasks/upcoming',
+  getParentRoute: () => AuthRoute,
+} as any)
+
+const AuthTasksTodayRoute = AuthTasksTodayImport.update({
+  path: '/tasks/today',
   getParentRoute: () => AuthRoute,
 } as any)
 
@@ -97,12 +95,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthTasksTaskIdImport
       parentRoute: typeof AuthImport
     }
-    '/_auth/tasks/upcoming': {
-      preLoaderRoute: typeof AuthTasksUpcomingImport
+    '/_auth/tasks/today': {
+      preLoaderRoute: typeof AuthTasksTodayImport
       parentRoute: typeof AuthImport
     }
-    '/_auth/tasks/today': {
-      preLoaderRoute: typeof AuthTasksTodayLazyImport
+    '/_auth/tasks/upcoming': {
+      preLoaderRoute: typeof AuthTasksUpcomingImport
       parentRoute: typeof AuthImport
     }
   }
@@ -114,8 +112,8 @@ export const routeTree = rootRoute.addChildren([
   IndexLazyRoute,
   AuthRoute.addChildren([
     AuthTasksTaskIdRoute,
+    AuthTasksTodayRoute,
     AuthTasksUpcomingRoute,
-    AuthTasksTodayLazyRoute,
   ]),
   LoginRoute,
   AboutLazyRoute,

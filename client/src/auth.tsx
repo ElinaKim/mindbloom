@@ -3,12 +3,13 @@ import React, {
   createContext,
   useState,
   useCallback,
+  useMemo,
   type ReactNode
 } from 'react'
 
 import { getLocalStorageToken, setLocalStorageToken } from './utils/tokenStorage';
 
-const AuthContext = React.createContext<AuthContext | null>(null)
+const AuthContext = createContext<AuthContext | null>(null)
 
 export interface AuthContext {
   isAuthenticated: boolean
@@ -26,8 +27,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setLocalStorageToken(null)
   }, [])
   const login = useCallback((token: string) => {
-    setToken(token)
-    setLocalStorageToken(token)
+    setToken(token);
+    setLocalStorageToken(token);
   }, [])
 
   return (
