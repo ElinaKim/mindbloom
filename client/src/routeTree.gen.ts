@@ -22,7 +22,6 @@ import { Route as AuthTasksTaskIdImport } from './routes/_auth.tasks.$taskId'
 // Create Virtual Routes
 
 const RegisterLazyImport = createFileRoute('/register')()
-const AboutLazyImport = createFileRoute('/about')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
@@ -31,11 +30,6 @@ const RegisterLazyRoute = RegisterLazyImport.update({
   path: '/register',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/register.lazy').then((d) => d.Route))
-
-const AboutLazyRoute = AboutLazyImport.update({
-  path: '/about',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
 
 const LoginRoute = LoginImport.update({
   path: '/login',
@@ -83,10 +77,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginImport
       parentRoute: typeof rootRoute
     }
-    '/about': {
-      preLoaderRoute: typeof AboutLazyImport
-      parentRoute: typeof rootRoute
-    }
     '/register': {
       preLoaderRoute: typeof RegisterLazyImport
       parentRoute: typeof rootRoute
@@ -116,7 +106,6 @@ export const routeTree = rootRoute.addChildren([
     AuthTasksUpcomingRoute,
   ]),
   LoginRoute,
-  AboutLazyRoute,
   RegisterLazyRoute,
 ])
 
