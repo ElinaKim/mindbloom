@@ -17,7 +17,7 @@ export default {
     colors : {
       'white': '#FFFFFF',
       'black': '#000000',
-      'green': '#C4D3D4',
+      'green': '#CDFC93',
       'darker-green': '#9FDC63',
       'pink': '#F4C8D8',
       'red': '#F51B00',

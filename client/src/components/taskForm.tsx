@@ -37,7 +37,7 @@ export function TaskForm({ closeModal, onFormSubmit }: TaskFormProps) {
   }
 
   return (
-    <div className="flex justify-center mt-[5%]">
+    <div className="flex justify-center mt-[10%] md:mt-[5%]">
       <form
         className='bg-white flex flex-col mt-2 border-light-grey p-2 border-2 rounded w-[50%]'
         onSubmit={handleSubmit(onSubmit)}
@@ -64,13 +64,13 @@ export function TaskForm({ closeModal, onFormSubmit }: TaskFormProps) {
         />
         {errors.task_name?.type === "required" && (
           <small className="text-sm text-red mt-1 pl-1">
-            Please provide a task name
+            !Please provide a task name
           </small>
         )}
         <label
           className='pt-4'
           htmlFor="description">
-          Description:
+          Description
         </label>
         <textarea
           className='mt-2 py-4 px-2 border-light-grey border-2 rounded'
@@ -79,23 +79,23 @@ export function TaskForm({ closeModal, onFormSubmit }: TaskFormProps) {
         />
         {errors.description?.type === "required" && (
           <small className="text-sm text-red mt-1 pl-1">
-            Please provide a due date
+            !Please provide description
           </small>
         )}
         <label
           className='pt-4'
-          htmlFor="due_date">
-          Due Date:
+          htmlFor='due_date'>
+          Due Date
         </label>
         <input
           className='mt-2 py-4 px-1 border-light-grey border-2 rounded'
-          type="date"
-          id="due_date"
+          type='date'
+          id='due_date'
           {...register('due_date', { required: true })}
         />
         {errors.due_date?.type === "required" && (
-          <small className="text-sm text-red mt-1 pl-1">
-            Please provide a due date
+          <small className='text-sm text-red mt-1 pl-1'>
+            !Please provide a due date
           </small>
         )}
         <div className='flex justify-start gap-2'>
