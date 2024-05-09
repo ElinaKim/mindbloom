@@ -10,6 +10,7 @@ export function TaskCheckbox({ isChecked, onCheckboxChange }: TaskCheckboxProps)
         type="checkbox"
         checked={isChecked}
         onChange={onCheckboxChange}
+        className='accent-green'
       />
     </>
   )
