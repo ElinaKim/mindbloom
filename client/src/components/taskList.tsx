@@ -6,9 +6,10 @@ import { useState } from 'react';
 
 export interface TaskListProps {
   tasks: Task[]
+  onTaskClick: (taskId: number) => void
 }
 
-export function TaskList({ tasks: initialTasks }: TaskListProps) {
+export function TaskList({ tasks: initialTasks, onTaskClick }: TaskListProps) {
   const [tasks, setTasks] = useState<Task[]>(initialTasks)
 
   const handleCheckboxChange = (taskId: number) => {
@@ -21,7 +22,11 @@ export function TaskList({ tasks: initialTasks }: TaskListProps) {
     setTasks(updatedTasks);
   };
 
-  const handleClick = async (task_id: number) => {
+  const handleEditClick = (taskId: number) => {
+    onTaskClick(taskId)
+  }
+
+  const handleDeleteClick = async (task_id: number) => {
     try {
       await tasksApi.deleteTask({ task_id });
       const updatedTasks = tasks.filter(task => task.id !== task_id);
@@ -40,7 +45,8 @@ export function TaskList({ tasks: initialTasks }: TaskListProps) {
           return (
             <div
               key={task.id}
-              className='flex justify-between items-center bg-white border-2 pt-4 p-2 mt-2 rounded hover:border-pink hover:border-2 shadow'>
+              className='flex justify-between items-center bg-white border-2 pt-4 p-2 mt-2 rounded hover:border-pink hover:border-2 shadow'
+            >
               <div className='flex'>
                 <TaskCheckbox
                   isChecked={task.isChecked || false}
@@ -54,7 +60,13 @@ export function TaskList({ tasks: initialTasks }: TaskListProps) {
                 </div>
               </div>
               <button
-                onClick={() => handleClick(task.id)}
+                onClick={() => handleEditClick(task.id)}
+                className='self-end'
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => handleDeleteClick(task.id)}
                 className='self-end'
               >
                 <img
