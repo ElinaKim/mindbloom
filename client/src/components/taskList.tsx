@@ -1,5 +1,6 @@
 import { TaskCheckbox } from './taskCheckbox';
 import DeleteIcon from '../assets/icons/delete.svg';
+import EditIcon from '../assets/icons/edit.svg';
 import type { Task } from '../types/task';
 import * as tasksApi from '../api/taskApi';
 import { useState } from 'react';
@@ -59,22 +60,28 @@ export function TaskList({ tasks: initialTasks, onTaskClick }: TaskListProps) {
                   <p className='pl-4 text-grey'>Due: {taskDueDate.toLocaleString()}</p>
                 </div>
               </div>
-              <button
-                onClick={() => handleEditClick(task.id)}
-                className='self-end'
-              >
-                Edit
-              </button>
-              <button
-                onClick={() => handleDeleteClick(task.id)}
-                className='self-end'
-              >
-                <img
-                  className='my-4 w-[25px]'
-                  src={DeleteIcon}
-                  alt='delete icon'
-                />
-              </button>
+              <div className='self-end align-center flex gap-2'>
+                <button
+                  onClick={() => handleEditClick(task.id)}
+                  className='self-end hover:fill-pink'
+                >
+                  <img
+                    className='my-4 w-[25px]'
+                    src={EditIcon}
+                    alt='edit icon'
+                  />
+                </button>
+                <button
+                  onClick={() => handleDeleteClick(task.id)}
+                  className='self-end'
+                >
+                  <img
+                    className='my-4 w-[25px]'
+                    src={DeleteIcon}
+                    alt='delete icon'
+                  />
+                </button>
+              </div>
             </div>
           )
         })
