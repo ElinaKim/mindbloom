@@ -26,10 +26,10 @@ export const getTodayTasks = async (): Promise<Task[]> => {
   }
 }
 
-export const getTaskById = async ({ task_id }: TaskPayload): Promise<Task | null> => {
+export const getTaskById = async (taskId: number): Promise<Task | null> => {
   try {
     const authToken = getLocalStorageToken()
-    const response = await ApiClient.get(`tasks/${task_id}`, {
+    const response = await ApiClient.get(`tasks/${taskId}`, {
       headers: {
         'Authorization': `Bearer ${authToken}`
       }
@@ -56,7 +56,7 @@ export const getUpcomingTasks = async (): Promise<Task[]> => {
   }
 }
 
-export const updateTask = async ({ task_id, task_name, description, due_date }: TaskPayload) => {
+export const updateTask = async (task_id: number, task_name: string, description: string, due_date: string) => {
   try {
     const authToken = getLocalStorageToken()
     const response = await ApiClient.put(`tasks/update-task/${task_id}`, {
