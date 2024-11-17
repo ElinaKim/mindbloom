@@ -6,6 +6,12 @@
 
 mindbloom is a user-friendly To-Do web app that helps people organize their daily life with ease.
 
+## ![AppPreview](/client/src/assets/images/today-tasks.png)
+
+## ![AppPreview](/client/src/assets/images/edit-task-form.png)
+
+## ![AppPreview](/client/src/assets/images/register-page.png)
+
 ## Problem
 
 This app provides a simple and elegant interface, it empowers its users to organize their responsibilities efficiently and manage their time effectively.
