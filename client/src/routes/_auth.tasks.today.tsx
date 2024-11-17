@@ -7,12 +7,13 @@ import * as tasksApi from '../api/taskApi'
 import * as userApi from '../api/userApi'
 import type { Task } from '../types/task'
 import { EditTaskForm } from '../components/editTaskForm';
+import dayjs from 'dayjs';
 
 export const Route = createFileRoute('/_auth/tasks/today')({
   component: Today,
 });
 
-const currentDate = new Date().toDateString();
+const currentDate = dayjs(new Date()).format('dddd, MMMM D')
 
 function Today() {
   const [tasks, setTasks] = useState<Task[]>([])
@@ -68,7 +69,7 @@ function Today() {
         <div className='flex-shrink-0'>
           <TaskMenu />
         </div>
-        <div className='w-[80vw] bg-white bg-opacity-40 flex flex-col justify-between m-auto mt-4 md:mt-8 p-4'>
+        <div className='w-[80vw] flex flex-col justify-between m-auto mt-4 md:mt-8 p-4'>
           <h1 className='text-xl md:text-4xl'>Hello, {user.user_name}</h1>
           <h2 className='text-xl mt-2 pb-2 md:text-2xl md:mt-4 font-kumbh-bold'>Tasks</h2>
           <h2 className='text-base mt-2 pb-2 md:text-xl md:mt-4 font-kumbh-bold'>Today: <span className='bg-pink px-2 rounded shadow'>{currentDate}</span></h2>

@@ -4,11 +4,14 @@ import EditIcon from '../assets/icons/edit.svg';
 import type { Task } from '../types/task';
 import * as tasksApi from '../api/taskApi';
 import { useState } from 'react';
+import dayjs from 'dayjs';
 
 export interface TaskListProps {
   tasks: Task[]
   onTaskClick: (taskId: number) => void
 }
+
+const date = new Date()
 
 export function TaskList({ tasks: initialTasks, onTaskClick }: TaskListProps) {
   const [tasks, setTasks] = useState<Task[]>(initialTasks)
@@ -57,7 +60,7 @@ export function TaskList({ tasks: initialTasks, onTaskClick }: TaskListProps) {
                     className={`place-self-center pl-4 w-[100%] text-base md:text-xl ${task.isChecked ? 'line-through text-grey' : ''}`}>
                     {task.task_name}
                   </p>
-                  <p className='pl-4 text-grey'>Due: {taskDueDate.toLocaleString()}</p>
+                  <p className='pl-4 text-grey'>Due: {taskDueDate > new Date() ? dayjs(taskDueDate).format('dddd, MMM D') : 'Today'}</p>
                 </div>
               </div>
               <div className='self-end align-center flex gap-2'>

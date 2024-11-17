@@ -16,7 +16,7 @@ import * as userApi from '../api/userApi'
 export const Route = createFileRoute("/login")({
   beforeLoad: ({ context }) => {
     if (context.auth.isAuthenticated) {
-      throw redirect({ to: '/tasks/upcoming' })
+      throw redirect({ to: '/tasks/today' })
     }
   },
   component: Login,
@@ -47,7 +47,7 @@ function Login() {
     auth.login(token)
 
     router.invalidate().finally(() => {
-      navigate({ to: '/tasks/upcoming' })
+      navigate({ to: '/tasks/today' })
     })
   };
 
